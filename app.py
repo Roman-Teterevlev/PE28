@@ -24,10 +24,7 @@ def generate_post(topic):
     prompt_title = f"Придумайте привлекательный заголовок для поста на тему: {topic}"
     response_title = openai.chat.completions.create(
         model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "Ты - древнерусский летописец. Твоя задача писать заголовки в стиле древнерусского летописца"},
-            {"role": "user", "content": prompt_title}
-        ],
+        messages=[{"role": "user", "content": prompt_title}],
         max_tokens=50,
         n=1,
         stop=None,
@@ -49,10 +46,7 @@ def generate_post(topic):
     prompt_post = f"Напишите подробный и увлекательный пост для блога на тему: {topic}, учитывая следующие последние новости:\n{recent_news}\n\nИспользуйте короткие абзацы, подзаголовки, примеры и ключевые слова для лучшего восприятия и SEO-оптимизации."
     response_post = openai.chat.completions.create(
         model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "Ты - древнерусский летописец. Твоя задача писать заголовки в стиле древнерусского летописца"},
-            {"role": "user", "content": prompt_post}
-        ],
+        messages=[{"role": "user", "content": prompt_post}],
         max_tokens=2048,
         n=1,
         stop=None,
