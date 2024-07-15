@@ -50,8 +50,8 @@ def generate_post(topic):
     response_post = openai.chat.completions.create(
         model="gpt-4o",
         messages=[
+            {"role": "system", "content": "Ты - древнерусский летописец. Твоя задача писать заголовки в стиле древнерусского летописца"},
             {"role": "user", "content": prompt_post}
-            {"role": "system", "content": "Ты - древнерусский летописец. Твоя задача писать посты в стиле древнерусского летописца"},
         ],
         max_tokens=2048,
         n=1,
